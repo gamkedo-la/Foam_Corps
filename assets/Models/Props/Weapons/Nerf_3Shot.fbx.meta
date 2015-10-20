@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 34921834841cb43e0b28082dea484c1a
+timeCreated: 1434742686
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BARRELS
+    100002: BARRELS_2
+    100004: BODY
+    100006: Cap_1
+    100008: Cap_2
+    100010: Cube
+    100012: Cube_1
+    100014: Cube_1_2
+    100016: Cube_2
+    100018: Cube_2_2
+    100020: DART
+    100022: DART1
+    100024: DART2
+    100026: DART3
+    100028: DART_1
+    100030: DART_2
+    100032: DART_POLY_V1
+    100034: DARTS
+    100036: GUARD
+    100038: HANDLE
+    100040: JOINT
+    100042: NERF
+    100044: //RootNode
+    100046: NERF_POLY_V1
+    100048: PLUNGER
+    100050: Plunger
+    100052: PLUNGER_2
+    100054: Plunger_2
+    100056: POLYS
+    100058: PRIMITIVES
+    100060: TRIGGER
+    100062: TRIGGER_2
+    100064: Tube
+    100066: Tube_1
+    100068: Tube_2
+    400000: BARRELS
+    400002: BARRELS_2
+    400004: BODY
+    400006: Cap_1
+    400008: Cap_2
+    400010: Cube
+    400012: Cube_1
+    400014: Cube_1_2
+    400016: Cube_2
+    400018: Cube_2_2
+    400020: DART
+    400022: DART1
+    400024: DART2
+    400026: DART3
+    400028: DART_1
+    400030: DART_2
+    400032: DART_POLY_V1
+    400034: DARTS
+    400036: GUARD
+    400038: HANDLE
+    400040: JOINT
+    400042: NERF
+    400044: //RootNode
+    400046: NERF_POLY_V1
+    400048: PLUNGER
+    400050: Plunger
+    400052: PLUNGER_2
+    400054: Plunger_2
+    400056: POLYS
+    400058: PRIMITIVES
+    400060: TRIGGER
+    400062: TRIGGER_2
+    400064: Tube
+    400066: Tube_1
+    400068: Tube_2
+    2300000: BARRELS
+    2300002: BODY
+    2300004: Cap_1
+    2300006: Cap_2
+    2300008: Cube
+    2300010: Cube_1
+    2300012: Cube_1_2
+    2300014: Cube_2
+    2300016: Cube_2_2
+    2300018: DART
+    2300020: DART1
+    2300022: DART2
+    2300024: DART3
+    2300026: DART_1
+    2300028: DART_2
+    2300030: HANDLE
+    2300032: JOINT
+    2300034: PLUNGER
+    2300036: Plunger
+    2300038: Plunger_2
+    2300040: TRIGGER
+    2300042: Tube
+    2300044: Tube_1
+    2300046: Tube_2
+    3300000: BARRELS
+    3300002: BODY
+    3300004: Cap_1
+    3300006: Cap_2
+    3300008: Cube
+    3300010: Cube_1
+    3300012: Cube_1_2
+    3300014: Cube_2
+    3300016: Cube_2_2
+    3300018: DART
+    3300020: DART1
+    3300022: DART2
+    3300024: DART3
+    3300026: DART_1
+    3300028: DART_2
+    3300030: HANDLE
+    3300032: JOINT
+    3300034: PLUNGER
+    3300036: Plunger
+    3300038: Plunger_2
+    3300040: TRIGGER
+    3300042: Tube
+    3300044: Tube_1
+    3300046: Tube_2
+    4300000: DART1
+    4300002: DART2
+    4300004: DART3
+    4300006: BARRELS
+    4300008: TRIGGER
+    4300010: BODY
+    4300012: PLUNGER
+    4300014: DART_2
+    4300016: DART_1
+    4300018: DART
+    4300020: Plunger
+    4300022: Plunger_2
+    4300024: Cube
+    4300026: Cube_1
+    4300028: Cube_2
+    4300030: Cube_1_2
+    4300032: Cube_2_2
+    4300034: HANDLE
+    4300036: JOINT
+    4300038: Cap_1
+    4300040: Cap_2
+    4300042: Tube_2
+    4300044: Tube_1
+    4300046: Tube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

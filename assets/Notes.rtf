@@ -1,0 +1,75 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww13900\viewh16300\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sl288\slmult1\pardirnatural
+
+\f0\fs24 \cf0 Running Assassins notes\
+\
+
+\b Current\
+
+\b0 \
+Saved out a version. Going to try to integrate the dart. Here goes\'85..\
+\
+	Attempt 1: Instantiate (Inefficient but fuck it fix later)\
+		This went decently well, it\'92s firing at least\
+		figure out why firing doesn\'92t work with the && ammo and && reload\
+			try one at a time?\
+		F
+\b ires from a weird positio
+\b0 n from the gun camera\
+		Will 
+\b kill yourself if you\'92re running and firing\
+		
+\b0 Having trouble naming owner.\
+
+\b 			May have to do RPC method after all
+\b0 \
+		\
+		\
+\
+\
+\
+\
+\
+Also reducing to 1 main because wtf.\
+\
+\ul \ulc0 Other things to fix\
+\ulnone 	Gun children to gun layer\
+		maybe it\'92s consolidating the model, otherwise have to figure out how to grab children\
+	\
+\
+
+\b 09/02\
+
+\b0 This Build has\
+	Newish map\
+		a few rooms with textures, proper heights, etc\
+	Scaled Avatar \
+		no animation, boooooooring\
+	Networking\
+	Scoring\
+		Scoreboard slightly broken. Opponent scores don\'92t appear until first kill/death.\
+
+\b \
+\
+8/21\
+
+\b0 WOOOO! Ok. Scoring works. The stats are updated per player. Now we just need to rework scoreboard canvas (rebuild maybe?) to ref either the individual player stats OR the player custom props. I think PCP and PS may be redundant at this point, may not need both, but using them to communicate so fuck it. PCP may be needed to update the canvas correctly.
+\b \
+\
+8/20
+\b0 \
+This isn\'92t going to work. learned that RPCs only get naturally called on same object, so I moved the RPC call to the PNM on the player with PlayerStats. Problems\
+	1) Even if it did register, it\'92s only going to register the death, because it\'92s called by dying.\
+	2) BUT, even THAT doesn\'92t work because when player dies, PlayerStats is destroyed\
+\
+
+\b 8/19
+\b0 \
+I was able to set player frags and deaths to custom player properties (I think?). Here\'92s what still needs to happen\
+	-The scoreboard canvas never did work.\
+		- Make it work\
+		- Access player properties score and deaths and put it on there\
+		- need to fix RPC AddFrag}
