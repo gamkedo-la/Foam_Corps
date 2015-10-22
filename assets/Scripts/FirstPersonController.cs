@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -41,6 +42,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+		private bool cursorLock;
+		private CursorLockMode wantedMode;
+		private float defaultWalkSpeed;
 		
 		private Animator anim;
 
@@ -58,6 +62,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			anim = GetComponentInChildren<Animator>();
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+			cursorLock = false;
+			wantedMode = CursorLockMode.None;
+			defaultWalkSpeed = m_WalkSpeed;
         }
 
 
@@ -84,7 +91,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+			if(Input.GetKeyDown(KeyCode.L)){
+				ToggleCursorLock();
+			}
         }
+
+		private void ToggleCursorLock(){
+			if (cursorLock) {
+				wantedMode = CursorLockMode.None;
+				cursorLock = false;
+				Debug.Log("Cursor is no longer locked");
+			} else {
+				wantedMode = CursorLockMode.Locked;
+				cursorLock = true;
+				Debug.Log("Cursor is locked!");
+			}
+			Cursor.visible = (CursorLockMode.Locked != wantedMode);
+		}
+
+		IEnumerator SpeedPowerDown() {
+			yield return new WaitForSeconds (15);
+			m_WalkSpeed = defaultWalkSpeed;
+		}
+
+		public void SpeedPowerUp(float speed) {
+			m_WalkSpeed = speed;
+			StartCoroutine (SpeedPowerDown());
+		}
 
 
         private void PlayLandingSound()
