@@ -9,6 +9,7 @@ public class SpeedPowerUp : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if (other.gameObject.GetComponent<FirstPersonController> () != null) {
 			other.gameObject.GetComponent<FirstPersonController> ().SpeedPowerUp(speed);
+			Destroy(gameObject);
 		}
 	}	
 }
