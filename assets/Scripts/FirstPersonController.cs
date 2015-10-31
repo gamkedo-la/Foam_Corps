@@ -30,6 +30,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 		[SerializeField] private float speedCoolTime;
 
+		public float hitPoints = 10.0f;
+		public float maxhitPoints = 10.0f;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -46,7 +49,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private bool cursorLock;
 		private CursorLockMode wantedMode;
 		private float defaultWalkSpeed;
-		
 		private Animator anim;
 
         // Use this for initialization
@@ -113,6 +115,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		IEnumerator SpeedPowerDown() {
 			yield return new WaitForSeconds (speedCoolTime);
 			m_WalkSpeed = defaultWalkSpeed;
+		}
+
+		public void HealPowerUp(){
+			hitPoints += (maxhitPoints * 0.20f);
+			if (hitPoints > maxhitPoints) {
+				hitPoints = maxhitPoints;
+			} 
 		}
 
 		public void SpeedPowerUp(float speed) {
