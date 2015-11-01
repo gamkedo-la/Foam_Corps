@@ -13,10 +13,13 @@ ModelImporter:
     400004: //RootNode
     2300000: pCube2
     2300002: pCube3
+    2300004: //RootNode
     3300000: pCube2
     3300002: pCube3
+    3300004: //RootNode
     4300000: pCube2
     4300002: pCube3
+    4300004: pCube5
   materials:
     importMaterials: 1
     materialName: 0
