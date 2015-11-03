@@ -25,6 +25,7 @@ public class NetworkManagerScript : MonoBehaviour {
 	[SerializeField] InputField messageWindow;
 	[SerializeField] PhotonHashtable PlayerCustomProps = new PhotonHashtable();
 	[SerializeField] GameObject playerManager;
+	
 
 	GameObject player;
 
@@ -38,6 +39,9 @@ public class NetworkManagerScript : MonoBehaviour {
 
 	void Start () 
 	{
+		if (PhotonNetwork.offlineMode = true){
+			PhotonNetwork.CreateRoom("Offline Room");
+		}
 		//Get Photon view and messsage queue
 		photonView = GetComponent<PhotonView> ();
 		messages = new Queue<string> (messagesCount);
