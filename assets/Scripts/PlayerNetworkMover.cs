@@ -32,22 +32,18 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		//Get animator for syncing
 		anim = GetComponentInChildren<Animator> ();
 
-		if(photonView.isMine)
+		if(photonView.isMine)  // Activate player scripts if my character
 		{
 			GetComponent<Rigidbody>().useGravity = true;
-
-			// DL - can consolidate for more proprietary scripts
 			GetComponent<CharacterController>().enabled = true;
 			(GetComponent("FirstPersonController") as MonoBehaviour).enabled = true;
 			GetComponentInChildren<DartGun>().enabled = true;
 			GetComponentInChildren<AudioListener>().enabled = true;
 			transform.tag = "Player";
 			gameObject.layer = 14;
-			
 			foreach(Camera cam in GetComponentsInChildren<Camera>())
 			cam.enabled = true;
-
-			// DL - put gun back on the gun (and sights?) on layer
+			// Put weapon back on Gun layer for camera masks
 			transform.Find("FirstPersonCharacter/GunCamera/Gun").gameObject.layer = 10;
 			
 		}
@@ -109,16 +105,13 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		health -= damage;
 		if (health <= 0 && photonView.isMine)
 		{
-			if(SendNetworkScore != null)
+			string myName = PhotonNetwork.player.name;
+			if(SendNetworkScore != null) // Update the scoreboard data
 			{
-				string myName = PhotonNetwork.player.name; 
-				SendNetworkScore(enemyName, myName);
-			}
+				SendNetworkScore(enemyName, myName);	}
 
-
-			//send messaging the frag event
-			if(SendNetworkMessage != null)
-				SendNetworkMessage(PhotonNetwork.player.name + " was killed by " + enemyName);
+			if(SendNetworkMessage != null) // send messaging of the frag event
+				SendNetworkMessage(myName + " was killed by " + enemyName);
 
 			if(RespawnMe != null)
 				RespawnMe(3f);
