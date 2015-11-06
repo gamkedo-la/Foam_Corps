@@ -15,7 +15,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 	Vector3 position;
 	Quaternion rotation;
 	float smoothing = 10f;
-	float health = 100f;
+	public float health = 100f;
 	float myPlayerFrag;
 	float myPlayerDeath;
 

@@ -4,6 +4,7 @@ using System.Collections;
 public class ZombieStats : MonoBehaviour {
 
 	public float health = 100f;
+	public float damage = 10;
 
 	// Use this for initialization
 	void Start () {
