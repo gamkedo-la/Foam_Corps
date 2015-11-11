@@ -10,7 +10,6 @@ public class DartScript : MonoBehaviour {
 	public float dartRange;
 	public bool shot = false;
 	private bool airborne = false;
-	private bool casting = false;
 	private bool killMe = false;
 	public float damage = 100f;
 
@@ -37,13 +36,11 @@ public class DartScript : MonoBehaviour {
 			rb.useGravity = true;
 			airborne = true;
 			shot = false;
-			casting = true;
 		}
 
 		if (airborne)
 		{
 			//Rotate towards velocity
-			casting = false;
 			RaycastHit hit;
 			rb.transform.LookAt( rb.transform.position + rb.velocity);
 			if(Physics.Raycast(transform.position, transform.forward, out hit, dartRange))

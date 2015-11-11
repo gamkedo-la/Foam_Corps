@@ -7,6 +7,7 @@ public class ZombieAI : MonoBehaviour {
 	public float targetTime; // time of last targeting operation
 	public float targetCooldown = 5.0F; // time between retargets
 	public float moveSpeed = 0.1F;
+	public float levelTargetY = 2;
 	
 
 
@@ -24,7 +25,8 @@ public class ZombieAI : MonoBehaviour {
 	void Update () {
 
 		// Look at player
-		transform.LookAt(target.transform);
+		Vector3 levelTarget = new Vector3(target.transform.position.x, levelTargetY, target.transform.position.z);
+		transform.LookAt(levelTarget);
 
 		// Lerp towards the player
 		float step = moveSpeed * Time.time;
@@ -44,17 +46,20 @@ public class ZombieAI : MonoBehaviour {
 	GameObject GetTarget (){ // Figure out the closest player to go after
 		GameObject[] targets;
 		targets = GameObject.FindGameObjectsWithTag("Player");
-		GameObject closest = null;
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject tar in targets){
-			Vector3 diff = tar.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance){
-				closest = tar;
-				distance = curDistance;
+		if (targets != null){
+			GameObject closest = null;
+			float distance = Mathf.Infinity;
+			Vector3 position = transform.position;
+			foreach (GameObject tar in targets){
+				Vector3 diff = tar.transform.position - position;
+				float curDistance = diff.sqrMagnitude;
+				if (curDistance < distance){
+					closest = tar;
+					distance = curDistance;
+				}
 			}
+			return closest;
 		}
-		return closest;
+		else return null;
 	}
 }

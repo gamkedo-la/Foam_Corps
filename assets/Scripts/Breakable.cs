@@ -6,6 +6,7 @@ public class Breakable : MonoBehaviour {
 public MeshCollider[] piece;
 public Rigidbody[] rigidbody;
 public int numberOfPieces;
+public bool broken = false;
 
 	// Use this for initialization
 	void Start () {
@@ -23,9 +24,15 @@ public int numberOfPieces;
 
 	}
 
-	void OnTriggerEnter(Collider other){
-		for(int i = 0; i < numberOfPieces; i++){
+	//void OnTriggerEnter(Collider other){
+	//	broken = true;
+	//}
+
+	void Update (){
+		if (broken == true){
+			for(int i = 0; i < numberOfPieces; i++){
 			rigidbody[i].isKinematic = false;
+			}
 		}
 	}
 	
