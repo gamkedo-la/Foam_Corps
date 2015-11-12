@@ -27,13 +27,15 @@ public class ZombieAI : MonoBehaviour {
 		// Look at player
 		Vector3 levelTarget = new Vector3(target.transform.position.x, levelTargetY, target.transform.position.z);
 		transform.LookAt(levelTarget);
-
-		// Lerp towards the player
-		float step = moveSpeed * Time.time;
-		transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
-				
+		
 	}
 
+	void FixedUpdate () {
+		// Move towards the player
+		//float step = moveSpeed * Time.time;
+		transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed);
+		
+	}
 
 	IEnumerator targetUpdate() {
 		while(true) {
