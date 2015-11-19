@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DartScript : MonoBehaviour {
+public class DartScript : WeaponBase {
 
 	public string owner;
 	public float moveSpeed;

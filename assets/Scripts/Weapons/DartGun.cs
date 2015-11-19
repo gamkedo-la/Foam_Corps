@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 
-public class DartGun : MonoBehaviour {
+public class DartGun : WeaponBase {
 
 
 	// DL - This script is responsible for: 1) Graphical Effects of Shooting 2) Physics of shooting 3) Impacts, etc.
