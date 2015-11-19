@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ZombieAI : MonoBehaviour {
+public class ZombieAI : StickySlowsMe {
 
 	public GameObject target; // what we're going to lerp to and "attack"
 	public float targetTime; // time of last targeting operation
@@ -33,7 +33,9 @@ public class ZombieAI : MonoBehaviour {
 	void FixedUpdate () {
 		// Move towards the player
 		//float step = moveSpeed * Time.time;
-		transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed);
+		transform.position = Vector3.MoveTowards(transform.position,
+		                                         target.transform.position,
+		                                         moveSpeed * m_StickyEffectMult);
 		
 	}
 

@@ -9,12 +9,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-    public class FirstPersonController : MonoBehaviour
+	public class FirstPersonController : StickySlowsMe
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
-        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+		[SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
@@ -128,7 +128,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_WalkSpeed = speed;
 			StartCoroutine (SpeedPowerDown());
 		}
-
 
         private void PlayLandingSound()
         {
@@ -272,7 +271,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+			speed = (m_IsWalking ? m_WalkSpeed : m_RunSpeed) * m_StickyEffectMult;
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:

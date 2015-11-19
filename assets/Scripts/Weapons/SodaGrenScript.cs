@@ -4,6 +4,9 @@ using System.Collections;
 public class SodaGrenScript : WeaponBase {
 	
 	[SerializeField] string splashPrefab;
+	[SerializeField] string dripZonePrefab;
+
+	private float ceilingY = 3.03f;
 
 	public string owner;
 	public float moveSpeed;
@@ -36,6 +39,10 @@ public class SodaGrenScript : WeaponBase {
 	
 	void SodaBurst() {
 		PhotonNetwork.Instantiate(splashPrefab, transform.position, Quaternion.identity, 0);
+		Vector3 dripZoneOrigin = transform.position;
+		dripZoneOrigin.y = ceilingY;
+		PhotonNetwork.Instantiate(dripZonePrefab, dripZoneOrigin,
+		                          Quaternion.AngleAxis(90.0f,Vector3.right), 0);
 		Destroy(gameObject);
 	}
 
@@ -44,7 +51,7 @@ public class SodaGrenScript : WeaponBase {
 	}
 	
 	[PunRPC]
-	public void NameDartRPC (string playerName)
+	public void NameSodaGrenRPC (string playerName)
 	{
 		owner = playerName;
 	}
