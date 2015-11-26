@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerNetworkMover : Photon.MonoBehaviour {
@@ -16,6 +17,8 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 	Quaternion rotation;
 	float smoothing = 10f;
 	public float health = 100f;
+	public GameObject healthCount;
+	bool myHealth = false;
 	float myPlayerFrag;
 	float myPlayerDeath;
 
@@ -45,6 +48,8 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			cam.enabled = true;
 			// Put weapon back on Gun layer for camera masks
 			transform.Find("FirstPersonCharacter/GunCamera/Gun").gameObject.layer = 10;
+			healthCount = this.transform.parent.transform.Find("VitalsCanvas/HealthBar/HealthCount").gameObject;
+			myHealth = true;
 			
 		}
 		else
@@ -73,6 +78,14 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			anim.SetBool ("Sprint", sprint);
 			yield return null;
 		}
+	}
+
+	void FixedUpdate ()
+	{
+		if (myHealth){
+			healthCount.GetComponent<Text>().text = health.ToString();
+		}
+		
 	}
 
 	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info)
