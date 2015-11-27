@@ -51,6 +51,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private float defaultWalkSpeed;
 		private Animator anim;
 
+		public void setMouseSens (float newSens) {
+			m_MouseLook.XSensitivity = newSens;
+			m_MouseLook.YSensitivity = newSens;
+		}
+
         // Use this for initialization
         private void Start()
         {

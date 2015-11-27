@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MouseSensitivity : MonoBehaviour {
 
-	public float sensitivity;
-	public float mouseSpeedX;
-	public float mouseSpeedY;
+	private FirstPersonController fpsController;
 
-
-
-	// Use this for initialization
-	void Start () {
-		mouseSpeedX = Input.GetAxis("Mouse X");
-		mouseSpeedY = Input.GetAxis("Mouse Y");
-	
-	}
-	
 	// Update is called once per frame
 	public void ChangeSensitivity (float sensitivity) {
-	mouseSpeedX = Input.GetAxis("Mouse X") * sensitivity;
-	mouseSpeedY = Input.GetAxis("Mouse Y") * sensitivity;
+		if(fpsController == null) {
+			GameObject playerGO = (GameObject) GameObject.FindGameObjectWithTag("Player");
+			if(playerGO) {
+				fpsController = playerGO.GetComponent<FirstPersonController>();
+			}
+		}
+		if(fpsController != null) {
+			fpsController.setMouseSens( sensitivity );
+		}
 	}
 }
