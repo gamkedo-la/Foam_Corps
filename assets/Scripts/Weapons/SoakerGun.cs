@@ -17,6 +17,7 @@ public class SoakerGun : WeaponBase {
 	public float range = 10; 
 	public float knockbackForce = 35; // how much force hit pushes with
 	public GameObject ammoCount;  // referenced for UI readout
+	public GameObject waterPrefab;
 
 
 
@@ -33,11 +34,17 @@ public class SoakerGun : WeaponBase {
 			if(loaded == true && ammo > 0){
 						shooting = true;
 						Debug.Log ("It's shooting");
+						waterPrefab.SetActive(true);
+
 			}		
-					
+			else{
+				waterPrefab.SetActive(false);
+				shooting = false;
+			}		
 		}
 		if(Input.GetButtonUp ("Fire1")){
 					shooting = false;
+					waterPrefab.SetActive(false);
 			}
 
 		
