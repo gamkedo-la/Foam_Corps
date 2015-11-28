@@ -23,32 +23,35 @@ public class DoorManager : MonoBehaviour {
 	int numberHoard;
 	int numberDartAmmo;
 	int numberSoakerAmmo;
+	bool initialLoad = true;
 
 
 	// Use this for initialization
 	void Start () {
 
-		numberOfDoors = doorHolder.transform.childCount; // set number of doors based on children of doorHolder
+		if(initialLoad){
+			initialLoad = false;
+			numberOfDoors = doorHolder.transform.childCount; // set number of doors based on children of doorHolder
 
-	
-		foreach (Transform child in doorHolder){ // populate our list with the doors children of doorHolder
-			doorList.Add(child.GetComponent<DoorSpawner>());
+			foreach (Transform child in doorHolder){ // populate our list with the doors children of doorHolder
+				doorList.Add(child.GetComponent<DoorSpawner>());
+			}
+
+			// take spawn type percentage inputs and calculate how much of each we need with how many doors we have
+			PercentageBreakdown();
+
+			// Assign all of the doors a spawn type
+			AssignDoors(numberKey, 0);
+			AssignDoors(numberHealthPowerUp, 1);
+			AssignDoors(numberSpeedPowerUp, 2);
+			AssignDoors(numberHoard, 3);
+			AssignDoors(numberDartAmmo, 4);
+			AssignDoors(numberSoakerAmmo, 5);
+			AssignDoorsRemainder(1,5);
 		}
-
-		// take spawn type percentage inputs and calculate how much of each we need with how many doors we have
-		PercentageBreakdown();
-
-		// Assign all of the doors a spawn type
-		AssignDoors(numberKey, 0);
-		AssignDoors(numberHealthPowerUp, 1);
-		AssignDoors(numberSpeedPowerUp, 2);
-		AssignDoors(numberHoard, 3);
-		AssignDoors(numberDartAmmo, 4);
-		AssignDoors(numberSoakerAmmo, 5);
-		AssignDoorsRemainder(1,5);
 	}
 
-
+		
 	void PercentageBreakdown(){
 		// determine from percentage inputs how many of each spawn type is assigned to door arrays
 		float total = (percentKey + percentHealthPowerUp + percentSpeedPowerUp + percentHoard + percentDartAmmo + percentSoakerAmmo);

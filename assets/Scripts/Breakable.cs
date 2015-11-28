@@ -28,6 +28,11 @@ public Collider collider;
 	//void OnTriggerEnter(Collider other){
 	//	broken = true;
 	//}
+[PunRPC]
+public void BreakDoor(){
+	broken = true;
+}
+
 
 	void Update (){
 		if (broken == true){

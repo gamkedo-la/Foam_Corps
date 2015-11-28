@@ -36,7 +36,7 @@ public string owner;
 						Destroy(gameObject);
 			}
 			if(hit.transform.tag == "Door"){
-				hit.transform.GetComponent<Breakable>().broken = true;
+				hit.transform.GetComponent<PhotonView>().RPC ("BreakDoor", PhotonTargets.All);
 				if(Physics.Raycast(transform.position, fwd, out hit, range)){
 					hit.rigidbody.AddForce(fwd * knockbackForce);
 				}
