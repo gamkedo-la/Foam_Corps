@@ -14,16 +14,41 @@ public class DartGun : WeaponBase {
 	[SerializeField] bool loaded = true;
 	[SerializeField] float shotTime;
 	public float loadTime = 2;	
-	public float ammo = 3;
+	private int ammo = 3;
 	public GameObject ammoCount;
 
+	public int ammoMax = 3;
+	public GameObject gunObj;
+	public GameObject dartAmmoGOFirst;
+	public GameObject dartAmmoGOSecond;
+	public GameObject dartAmmoGOLast;
 
+	void UpdateAmmoModelVis() {
+		dartAmmoGOLast.SetActive(ammo>0);
+		dartAmmoGOSecond.SetActive(ammo>1);
+		dartAmmoGOFirst.SetActive(ammo>2);
+	}
+
+	public void GiveAmmo(int amt) {
+		ammo += amt;
+		if(ammo > ammoMax) {
+			ammo = ammoMax;
+		}
+
+		// prompt gun to display its new ammo
+		loaded = false;
+		shotTime = Time.time;
+
+		UpdateAmmoModelVis();
+	}
 
 	// Use this for initialization
 	void Start () 
 	{
 		//anim = GetComponentInChildren<Animator> ();
 		ammoCount = this.transform.parent.parent.transform.Find("VitalsCanvas/VitalsBar/AmmoCount").gameObject;
+
+		UpdateAmmoModelVis();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +77,7 @@ public class DartGun : WeaponBase {
 			shooting = false;
 			loaded = false;
 			ammo -= 1;
+			UpdateAmmoModelVis();
 			//instantiate the dart
 			GameObject dartInstance;
 			dartInstance = PhotonNetwork.Instantiate(dartPrefab, transform.position, transform.rotation, 0) as GameObject;
@@ -62,6 +88,17 @@ public class DartGun : WeaponBase {
 
 	void FixedUpdate ()
 	{
+		Quaternion gunRotGoal = transform.rotation * Quaternion.AngleAxis(180.0f,Vector3.up);
+		if(loaded == false || ammo == 0) {
+			gunRotGoal *= Quaternion.AngleAxis(-68.0f,Vector3.up);
+			gunRotGoal *= Quaternion.AngleAxis(38.0f,Vector3.right);
+		}
+		
+		gunObj.transform.rotation = Quaternion.Slerp(
+			gunObj.transform.rotation,
+			gunRotGoal, 0.3f);
+
+
 		ammoCount.GetComponent<Text>().text = ammo.ToString();
 	}
 
