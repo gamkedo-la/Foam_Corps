@@ -59,6 +59,10 @@ public class DartScript : WeaponBase {
 					{
 						return;
 					}
+					if(hit.transform.tag == "Friendly")
+					{
+						return;
+					}
 					
 					//COME BACK TO THIS. Currently happens too far from the collision
 					if(hit.transform.tag == "Map")

@@ -15,12 +15,15 @@ public class SodaGrenScript : WeaponBase {
 	public bool shot = false;
 	private bool airborne = false;
 	public float damage = 100f;
+	PhotonView photonView;
 	
 	[SerializeField] float selfdestructTime;
 	[SerializeField] float hitTime = 0;
 	
 	void Start() 
 	{		
+		photonView = transform.GetComponent<PhotonView>();
+		Debug.Log("Grenade ID " + photonView.viewID);
 		rb = GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
 		shot = true;
@@ -32,7 +35,7 @@ public class SodaGrenScript : WeaponBase {
 		StartCoroutine(AutoBurstTimer());
 	}
 
-	IEnumerator AutoBurstTimer() {
+		IEnumerator AutoBurstTimer() {
 		yield return new WaitForSeconds(7.0f);
 		SodaBurst();
 	}
@@ -48,8 +51,10 @@ public class SodaGrenScript : WeaponBase {
 		Destroy(gameObject);
 	}
 
-	void OnCollisionEnter() {
+	void OnCollisionEnter(Collision collision) {
+		if(collision.transform.tag != "Friendly"){
 		SodaBurst();
+		}
 	}
 	
 	[PunRPC]

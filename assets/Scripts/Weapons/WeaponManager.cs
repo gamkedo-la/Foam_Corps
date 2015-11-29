@@ -3,23 +3,25 @@ using System.Collections;
 using System.Collections.Generic; // for List<>
 using UnityEngine.UI;
 
-public class WeaponManager : MonoBehaviour {
+public class WeaponManager : Photon.MonoBehaviour {
 	
 	private DartGun dartGun;
 	private SoakerGun soakerGun;
 	private SodaGrenadeThrower sodaGrenadeThrower;
 
-	private List<WeaponBase> allWep = new List<WeaponBase>();
+	public List<WeaponBase> allWep = new List<WeaponBase>();
 	
 	void Start() {
-		dartGun = GetComponent<DartGun>();
-		allWep.Add((WeaponBase)dartGun);
+		if(photonView.isMine){
+			dartGun = GetComponentInChildren<DartGun>();
+			allWep.Add((WeaponBase)dartGun);
 
-		soakerGun = GetComponent<SoakerGun>();
-		allWep.Add((WeaponBase)soakerGun);
+			soakerGun = GetComponentInChildren<SoakerGun>();
+			allWep.Add((WeaponBase)soakerGun);
 
-		sodaGrenadeThrower = GetComponent<SodaGrenadeThrower>();
-		allWep.Add((WeaponBase)sodaGrenadeThrower);
+			sodaGrenadeThrower = GetComponentInChildren<SodaGrenadeThrower>();
+			allWep.Add((WeaponBase)sodaGrenadeThrower);
+		}
 	}
 
 	void ChangeWep(WeaponBase toWep) {
