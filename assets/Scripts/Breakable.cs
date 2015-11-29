@@ -31,6 +31,8 @@ public Collider collider;
 [PunRPC]
 public void BreakDoor(){
 	broken = true;
+	SoundCenter.instance.PlayClipOn(
+			SoundCenter.instance.doorBreak,transform.position);
 }
 
 

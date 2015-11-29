@@ -23,6 +23,9 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	void ChangeWep(WeaponBase toWep) {
+		SoundCenter.instance.PlayClipOn(
+			SoundCenter.instance.playerWepSwitch,transform.position);
+
 		foreach(WeaponBase eachWep in allWep) {
 			eachWep.enabled = (eachWep == toWep);
 		}

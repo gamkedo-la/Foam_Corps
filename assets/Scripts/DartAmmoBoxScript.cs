@@ -7,6 +7,8 @@ public class DartAmmoBoxScript : MonoBehaviour {
 	void OnTriggerEnter (Collider other)
 	{
 		other.GetComponentInChildren<DartGun>().ammo = 3;
+		SoundCenter.instance.PlayClipOn(
+			SoundCenter.instance.getPowerup,transform.position);
 		Destroy(gameObject);
 	}
 }

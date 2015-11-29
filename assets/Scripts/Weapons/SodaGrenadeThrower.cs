@@ -30,11 +30,16 @@ public class SodaGrenadeThrower : WeaponBase {
 	void Update (){
 		//Shoot if we hit fire, aren't running, have ammo, and round is loaded
 		if(Input.GetButtonDown ("Fire1") && !Input.GetKey(KeyCode.LeftShift)){
-				if(loaded == true && ammo > 0){
-					shooting = true;
-					shotTime = Time.time;
-					Debug.Log ("It's firing");
-				}		
+			if(loaded == true && ammo > 0){
+				shooting = true;
+				shotTime = Time.time;
+				Debug.Log ("It's firing");
+				SoundCenter.instance.PlayClipOn(
+					SoundCenter.instance.sodaThrow,transform.position);
+			} else {
+				SoundCenter.instance.PlayClipOn(
+					SoundCenter.instance.playerNoAmmoTriedToFire,transform.position);
+			}
 		}
 
 		//Reload if the cooldown has happened

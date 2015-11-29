@@ -15,6 +15,8 @@ public string owner;
 	void Update () {
 		if(Input.GetButtonDown ("Fire2")){
 			if( meleeCooldown == true){
+				SoundCenter.instance.PlayClipOn(
+					SoundCenter.instance.melee,transform.position);
 				MeleeAttack();
 				meleeCooldown = false;
 				StartCoroutine(MeleeCool());

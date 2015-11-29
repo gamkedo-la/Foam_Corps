@@ -67,6 +67,8 @@ public class ZombieNetworkMover : Photon.MonoBehaviour {
 	public void GetShot(float damage, string enemyName)
 	{
 		health -= damage;
+		SoundCenter.instance.PlayClipOn(
+			SoundCenter.instance.randomZombieSound(),transform.position);
 		if (health <= 0)
 		{
 			string myName = ("Zombie");

@@ -5,20 +5,42 @@ public class SoundCenter : MonoBehaviour {
 	public static SoundCenter instance;
 
 	public AudioClip sodaSplash;
+	public AudioClip sodaThrow;
 	public AudioClip watergunSquirt;
 	public AudioClip zombieMoan;
+	public AudioClip zombieMoan2;
+	public AudioClip zombieMoan3;
 	public AudioClip doorBreak;
 	public AudioClip melee;
 	public AudioClip dartShoot;
 	public AudioClip dartStick;
+	public AudioClip getPowerup;
 	public AudioClip playerHurt;
 	public AudioClip playerDie;
+	public AudioClip playerJump;
+	public AudioClip playerWepSwitch;
+	public AudioClip playerNoAmmoTriedToFire;
 
 	void Awake() {
 		if(instance) {
 			Destroy(instance.gameObject);
 		}
 		instance = this;
+	}
+
+	public AudioClip randomZombieSound() {
+		switch( Random.Range(0,3) ) {
+		case 0:
+			return zombieMoan;
+			break;
+		case 1:
+			return zombieMoan2;
+			break;
+		case 2:
+		default:
+			return zombieMoan3;
+			break;
+		}
 	}
 
 	public void PlayClipOn(AudioClip clip, Vector3 pos, float atVol = 1.0f,
@@ -34,6 +56,6 @@ public class SoundCenter : MonoBehaviour {
 		aSource.pitch = Random.Range(0.85f,1.15f);
 		// set other aSource properties here, if desired
 		aSource.Play(); // start the sound
-		Destroy(tempGO, clip.length/aSource.pitch); // destroy object after clip duration
+		Destroy(tempGO, clip.length/aSource.pitch);  // destroy object after clip duration
 	}
 }

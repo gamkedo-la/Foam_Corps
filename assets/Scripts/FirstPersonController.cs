@@ -114,6 +114,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				cursorLock = true;
 				Debug.Log("Cursor is locked!");
 			}
+			Cursor.lockState = wantedMode;
 			Cursor.visible = (CursorLockMode.Locked != wantedMode);
 		}
 
@@ -166,7 +167,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
+					SoundCenter.instance.PlayClipOn(
+						SoundCenter.instance.playerJump,transform.position);
+                    // PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
                 }

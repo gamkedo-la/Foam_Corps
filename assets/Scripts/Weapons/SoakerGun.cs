@@ -18,6 +18,7 @@ public class SoakerGun : WeaponBase {
 	public float knockbackForce = 35; // how much force hit pushes with
 	public GameObject ammoCount;  // referenced for UI readout
 	public GameObject waterPrefab;
+	private ParticleSystem waterSprayer; // grabbed off waterPrefab in Start()
 
 
 
@@ -25,26 +26,31 @@ public class SoakerGun : WeaponBase {
 	void Start () 
 	{
 		ammoCount = this.transform.parent.parent.transform.Find("VitalsCanvas/VitalsBar/AmmoCount").gameObject;
-		
+		waterPrefab.SetActive(true);
+		waterSprayer = waterPrefab.GetComponent<ParticleSystem>();
+		waterSprayer.enableEmission = false;
 	}
 	
 	// Update is called once per frame
 	void Update (){
 		if(Input.GetButton ("Fire1") && !Input.GetKey(KeyCode.LeftShift)){ // While pressing fire, we aren't running, and we have ammo, we are shooting.
 			if(loaded == true && ammo > 0){
-						shooting = true;
-						Debug.Log ("It's shooting");
-						waterPrefab.SetActive(true);
-
+				shooting = true;
+				Debug.Log ("It's shooting");
+				waterSprayer.enableEmission = true;
+				SoundCenter.instance.PlayClipOn(
+					SoundCenter.instance.watergunSquirt,transform.position);
 			}		
 			else{
-				waterPrefab.SetActive(false);
+				waterSprayer.enableEmission = false;
 				shooting = false;
+				SoundCenter.instance.PlayClipOn(
+					SoundCenter.instance.playerNoAmmoTriedToFire,transform.position);
 			}		
 		}
 		if(Input.GetButtonUp ("Fire1")){
-					shooting = false;
-					waterPrefab.SetActive(false);
+				shooting = false;
+				waterSprayer.enableEmission = false;
 			}
 
 		

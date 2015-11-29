@@ -116,8 +116,11 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 	public void GetShot(float damage, string enemyName)
 	{
 		health -= damage;
+
 		if (health <= 0 && photonView.isMine)
 		{
+			SoundCenter.instance.PlayClipOn(
+				SoundCenter.instance.playerDie,transform.position);
 			string myName = PhotonNetwork.player.name;
 			if(SendNetworkScore != null) // Update the scoreboard data
 			{
@@ -130,6 +133,9 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 				RespawnMe(3f);
 		
 			PhotonNetwork.Destroy (gameObject);
+		} else {
+			SoundCenter.instance.PlayClipOn(
+				SoundCenter.instance.playerHurt,transform.position);
 		}
 	}
 

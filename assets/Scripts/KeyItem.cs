@@ -15,6 +15,8 @@ public class KeyItem : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 		if(other.gameObject.tag == "Player"){
+			SoundCenter.instance.PlayClipOn(
+				SoundCenter.instance.getPowerup,transform.position);
 			networkManager.GetComponent<PhotonView>().RPC ("KeyCollectedRPC", PhotonTargets.All);
 			Destroy(this.gameObject);
 		}

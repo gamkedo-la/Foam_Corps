@@ -67,6 +67,8 @@ public class DartScript : WeaponBase {
 						//Stop Physics and stick to what we hit
 						if (killMe == false)
 						{
+							SoundCenter.instance.PlayClipOn(
+								SoundCenter.instance.dartStick,transform.position);
 							hitTime = (Time.time + selfdestructTime);
 							rb.useGravity = false;
 							rb.isKinematic = true;
