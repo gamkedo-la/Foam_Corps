@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DoorManager : MonoBehaviour {
+public class DoorManager : Photon.MonoBehaviour {
 
 	// This script will collect all of the breakable doors into an array and tell them at the start of the game what they will be spawning
 
@@ -23,13 +23,16 @@ public class DoorManager : MonoBehaviour {
 	int numberHoard;
 	int numberDartAmmo;
 	int numberSoakerAmmo;
-	bool initialLoad = true;
+	public bool initialLoad = true;
 
 
 	// Use this for initialization
 	void Start () {
 
+		PhotonView photonView = transform.GetComponent<PhotonView>();
+
 		if(initialLoad){
+			Debug.Log ("Door Manager " + photonView.viewID + " is running");
 			initialLoad = false;
 			numberOfDoors = doorHolder.transform.childCount; // set number of doors based on children of doorHolder
 
@@ -48,6 +51,22 @@ public class DoorManager : MonoBehaviour {
 			AssignDoors(numberDartAmmo, 4);
 			AssignDoors(numberSoakerAmmo, 5);
 			AssignDoorsRemainder(1,5);
+		}
+	}
+
+	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info)
+	{
+		// DL - Stream Input
+		if(stream.isWriting)
+		{
+			stream.SendNext(initialLoad);
+			
+		}
+		// DL - Stream Output. Read/Write order must be the same
+		else
+		{
+			initialLoad = (bool) stream.ReceiveNext();
+		
 		}
 	}
 
