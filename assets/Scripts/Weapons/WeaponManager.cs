@@ -4,7 +4,10 @@ using System.Collections.Generic; // for List<>
 using UnityEngine.UI;
 
 public class WeaponManager : Photon.MonoBehaviour {
-	
+	public GameObject dartGunModel;
+	public GameObject waterGunModel;
+	public GameObject canThrowerModel;
+
 	private DartGun dartGun;
 	private SoakerGun soakerGun;
 	private SodaGrenadeThrower sodaGrenadeThrower;
@@ -21,6 +24,8 @@ public class WeaponManager : Photon.MonoBehaviour {
 
 			sodaGrenadeThrower = GetComponentInChildren<SodaGrenadeThrower>();
 			allWep.Add((WeaponBase)sodaGrenadeThrower);
+
+			ChangeWep(dartGun);
 		}
 	}
 
@@ -31,6 +36,10 @@ public class WeaponManager : Photon.MonoBehaviour {
 		foreach(WeaponBase eachWep in allWep) {
 			eachWep.enabled = (eachWep == toWep);
 		}
+
+		dartGunModel.SetActive(toWep == dartGun);
+		waterGunModel.SetActive(toWep == soakerGun);
+		canThrowerModel.SetActive(toWep == sodaGrenadeThrower);
 	}
 	
 	void Update () {

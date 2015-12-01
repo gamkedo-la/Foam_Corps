@@ -20,7 +20,9 @@ public class SoakerGun : WeaponBase {
 	public GameObject waterPrefab;
 	private ParticleSystem waterSprayer; // grabbed off waterPrefab in Start()
 
-
+	public GameObject waterGunModel;
+	public ParticleSystem waterInTank;
+	Vector3 wepOrig;
 
 	// Use this for initialization
 	void Start () 
@@ -29,10 +31,20 @@ public class SoakerGun : WeaponBase {
 		waterPrefab.SetActive(true);
 		waterSprayer = waterPrefab.GetComponent<ParticleSystem>();
 		waterSprayer.enableEmission = false;
+		wepOrig = waterGunModel.transform.localPosition;
 	}
 	
 	// Update is called once per frame
 	void Update (){
+
+		waterGunModel.transform.localPosition = wepOrig
+			+ Mathf.Cos(transform.position.x+transform.position.z) * Vector3.up * 0.03f
+				+ Mathf.Cos(transform.position.x*0.7f+transform.position.z*0.4f) * Vector3.right * 0.03f
+				+ Mathf.Cos(transform.position.x*0.3f+transform.position.z*0.5f) * Vector3.forward * 0.01f;
+		waterGunModel.transform.localRotation =
+			Quaternion.AngleAxis(-90.0f + Mathf.Cos (Time.time*0.1f)*3.0f,Vector3.right) *
+				Quaternion.AngleAxis(Mathf.Cos (Time.time*0.4f*0.1f)*3.0f,Vector3.up);
+
 		if(Input.GetButton ("Fire1") && !Input.GetKey(KeyCode.LeftShift)){ // While pressing fire, we aren't running, and we have ammo, we are shooting.
 			if(loaded == true && ammo > 0){
 				shooting = true;
@@ -69,12 +81,13 @@ public class SoakerGun : WeaponBase {
 		}
 
 		if(ammo <= 0){ // if we run out of ammo, we aren't loaded
+			waterInTank.gameObject.SetActive(false);
 			loaded = false;
 		}
 
 		if(loaded == false){ // if we arent loaded...
 			// TODO switch to primary weapon
-			Destroy (this); // and destroy the special weapon
+			// Destroy (this); // and destroy the special weapon
 		}
 
 		
