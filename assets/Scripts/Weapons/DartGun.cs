@@ -31,9 +31,9 @@ public class DartGun : WeaponBase {
 
 	public void GiveAmmo(int amt) {
 		ammo += amt;
-		if(ammo > ammoMax) {
+		/*if(ammo > ammoMax) { // allow overload?
 			ammo = ammoMax;
-		}
+		}*/
 
 		// prompt gun to display its new ammo
 		loaded = false;
