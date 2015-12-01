@@ -39,7 +39,7 @@ public class NetworkManagerScript : MonoBehaviour {
 
 	void Start () 
 	{
-		if (PhotonNetwork.offlineMode = true){
+		if (PhotonNetwork.offlineMode == true){
 			PhotonNetwork.CreateRoom("Offline Room");
 		}
 		//Get Photon view and messsage queue

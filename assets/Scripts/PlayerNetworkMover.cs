@@ -39,8 +39,10 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		{
 			GetComponent<Rigidbody>().useGravity = true;
 			GetComponent<CharacterController>().enabled = true;
+			GetComponent<WeaponManager>().enabled = true;
 			(GetComponent("FirstPersonController") as MonoBehaviour).enabled = true;
 			GetComponentInChildren<DartGun>().enabled = true;
+			GetComponentInChildren<Melee>().enabled = true;
 			GetComponentInChildren<AudioListener>().enabled = true;
 			transform.tag = "Player";
 			gameObject.layer = 14;

@@ -17,12 +17,14 @@ public class DoorSpawner : Photon.MonoBehaviour {
 	public bool broken = false; // trigger from breakable script to initiate spawn
 	bool firstTime = true; // prevent double spawns in network?
 	Breakable breakable;
+	PhotonView photonView;
 
 
 	// Use this for initialization
 	void Start () {
 
 		breakable = this.GetComponent<Breakable>();
+		//photonView = transform.GetComponent<PhotonView>();
 	}
 	
 	// Update is called once per frame
@@ -36,22 +38,21 @@ public class DoorSpawner : Photon.MonoBehaviour {
 		if (spawnIt == true){
 			firstTime = false;
 			spawnIt = false;
-			transform.GetComponent<PhotonView>().RPC ("DoorSpawn", PhotonTargets.All);
+			DoorSpawn();
+			//photonView.RPC ("DoorSpawn", PhotonTargets.All);
 			
 		}
 	
 	}
 
-	[PunRPC]
+	//[PunRPC]
 	public void DoorSpawn (){
 
 			firstTime = false;
 			spawnIt = false;
 			Vector3 doorSpawnPoint = new Vector3( ((this.transform.position.x) + offsetX), ((this.transform.position.y) + offsetY), ((this.transform.position.z) + offsetZ) );
-			PhotonNetwork.Instantiate (spawnOption[spawnChoice],
-		                                    doorSpawnPoint,
-		                                    this.transform.rotation,
-		                                    0);
+			//PhotonNetwork.Instantiate (spawnOption[spawnChoice], doorSpawnPoint, this.transform.rotation, 0);
+			PhotonNetwork.InstantiateSceneObject (spawnOption[spawnChoice], doorSpawnPoint, this.transform.rotation, 0, null);
 			this.enabled = false;
 			
 	}

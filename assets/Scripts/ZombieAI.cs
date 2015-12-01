@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class ZombieAI : StickySlowsMe {
 
@@ -47,9 +49,11 @@ public class ZombieAI : StickySlowsMe {
   		}
 	}
 
+//&& "Friendly")
 	GameObject GetTarget (){ // Figure out the closest player to go after
-		GameObject[] targets;
-		targets = GameObject.FindGameObjectsWithTag("Player");
+		List<GameObject> targets = new List<GameObject>();
+		targets.AddRange(GameObject.FindGameObjectsWithTag("Player").ToList());
+		targets.AddRange(GameObject.FindGameObjectsWithTag("Friendly").ToList());
 		if (targets != null){
 			GameObject closest = null;
 			float distance = Mathf.Infinity;
