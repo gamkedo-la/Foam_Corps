@@ -1,0 +1,34 @@
+Mono path[0] = 'C:/Users/Dan Lazar/Documents/GitHub/Foam_Corps/_BUILDS/FoamCorps_V04_3_Data/Managed'
+Mono path[1] = 'C:/Users/Dan Lazar/Documents/GitHub/Foam_Corps/_BUILDS/FoamCorps_V04_3_Data/Mono'
+Mono config path = 'C:/Users/Dan Lazar/Documents/GitHub/Foam_Corps/_BUILDS/FoamCorps_V04_3_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/Dan Lazar/Documents/GitHub/Foam_Corps/_BUILDS/FoamCorps_V04_3_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55039
+Multi-casting "[IP] 192.168.2.2 [Port] 55039 [Flags] 2 [Guid] 804803725 [EditorId] 1687411201 [Version] 1048832 [Id] WindowsPlayer(Mertins) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.2.2:55039]
+Initialize engine version: 5.2.1f1 (44735ea161b3)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 670 (ID=0x1189)
+    Vendor:   NVIDIA
+    VRAM:     1989 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: C:\Users\Dan Lazar\Documents\GitHub\Foam_Corps\_BUILDS\FoamCorps_V04_3_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.047 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
