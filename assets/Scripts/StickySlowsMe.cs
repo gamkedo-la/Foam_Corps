@@ -10,7 +10,7 @@ public class StickySlowsMe : MonoBehaviour {
 	}
 	
 	public IEnumerator UnstickySpeed() {
-		yield return new WaitForSeconds (8.0f);
+		yield return new WaitForSeconds (6.0f);
 		m_StickyEffectMult = 1.0f;
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SurvivalModeManager : MonoBehaviour {
 
@@ -8,10 +9,14 @@ public class SurvivalModeManager : MonoBehaviour {
 	public int keysCollected;
 	public KeyItemManager keyItemManager;
 	public GameObject tempVictoryText;
+	public GameObject keyCount;
+	string keyText;
+
 
 	// Use this for initialization
 	void Start () {
 		keysCollected = 0;
+		keyText = keyCount.GetComponent<Text>().text;
 	
 	}
 	
@@ -20,16 +25,19 @@ public class SurvivalModeManager : MonoBehaviour {
 
 		keysCollected = keyItemManager.keysCollected;
 
+		//keyText = "keysCollected  keyGoal).ToString()";
+
 		if (keysCollected >= keyGoal){
 			win = true;
 		}
 
 		//THIS IS TEMP
 		if (win == true){
-			tempVictoryText.SetActive(true);
-		}
+			Application.LoadLevel("VictoryScreen");
+		}	
+	}
 
-
-	
+	void FixedUpdate() {
+		keyCount.GetComponent<Text>().text = (keysCollected + " / " + keyGoal).ToString();
 	}
 }
