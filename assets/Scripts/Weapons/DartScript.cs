@@ -9,7 +9,7 @@ public class DartScript : WeaponBase {
 	public Collider col;
 	public float dartRange;
 	public bool shot = false;
-	private bool airborne = false;
+	public bool airborne = false;
 	private bool killMe = false;
 	public float damage = 100f;
 
@@ -18,7 +18,6 @@ public class DartScript : WeaponBase {
 
 	void Start() 
 	{
-		
 		rb = GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
 		shot = true;
