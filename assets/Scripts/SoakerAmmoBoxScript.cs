@@ -7,6 +7,8 @@ public class SoakerAmmoBoxScript : MonoBehaviour {
 	void OnTriggerEnter (Collider other)
 	{
 		other.GetComponentInChildren<SoakerGun>().ammo = 600;
+		SoundCenter.instance.PlayClipOn(
+			SoundCenter.instance.getPowerup,transform.position);
 		Destroy(gameObject);
 	}
 }
